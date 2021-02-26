@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_covid19_assessment_covid19_assessment,covid19_assessment.covid19_assessment,model_covid19_assessment_covid19_assessment,base.group_user,1,1,1,1
