@@ -15,6 +15,7 @@ Implement logic inside `addon/covid19_assessment` module where unregistered user
 - First and Last name
 - Email
 
+Data must be persisted to Odoo database.
 Once user sends this data they should be redirected to page where it says that they will be contacted once their data is processed, and they should also get an email saying that we received their data.
 
 # Development
