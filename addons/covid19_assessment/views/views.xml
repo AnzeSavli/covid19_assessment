@@ -1,31 +1,89 @@
 <odoo>
   <data>
     <!-- explicit list view definition -->
-<!--
+
     <record model="ir.ui.view" id="covid19_assessment.list">
       <field name="name">covid19_assessment list</field>
       <field name="model">covid19_assessment.covid19_assessment</field>
       <field name="arch" type="xml">
         <tree>
-          <field name="name"/>
-          <field name="value"/>
-          <field name="value2"/>
+            <field name="firstName" string="First name" />
+            <field name="lastName" string="Last name"/>
+            <field name="age" string="Age"/>
+            <field name="email" string="Email address" />
+            <field name="fever" string="Fever: Yes/No" />
+            <field name="temperature" string="Last measured temperature" attrs="{'invisible':[('fever','=',False)]}"/>
+            <field name="cough" string="Cough: Yes/No" />
+            <field name="headache" string="Sever headache: Yes/No" />
+            <field name="contact" string="Contact with someone who has COVID-19: Yes/No" />
         </tree>
       </field>
     </record>
--->
+
+    <record model="ir.ui.view" id="covid19_assessment.new">
+      <field name="name">Unregistered User</field>
+      <field name="model">covid19_assessment.covid19_assessment</field>
+      <field name="arch" type="xml">
+      <form method="POST">
+        <!-- <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()" /> -->
+        <group>
+            <group>
+                <field name="firstName" string="What is your first name?" />
+                <field name="lastName" string="What is your last name?"/>
+            </group>
+            <group>
+                <field name="age" string="What is your age?"/>
+                <field name="email" string="Please enter your email address" />
+            </group>
+            <group>
+                <field name="fever" string="Do you have a fever?" />
+            </group>
+            <group>
+                <field name="temperature" string="What is your last measured temperature?" attrs="{'invisible':[('fever','=',False)]}"/>
+            </group>
+            <group col="6" colspan="2">
+                <field name="cough" string="Do you cough?" />
+                <field name="headache" string="Do you have sever headache?" />
+                <field name="contact" string="Contact with someone who has COVID-19?" />
+            </group>
+            <group col="6" colspan="2">
+                <button type="submit">Dodaj</button>
+            </group>
+        </group>
+      </form>
+      </field>
+    </record>
+
+    <!-- <record id="user_registered" model="website.page">
+        <field name="name">Registered</field>
+        <field name="type">qweb</field>
+        <field name="url">/user-registered</field>
+        <field name="website_published">True</field>
+        <field name="key">covid19_assessment.user_registered</field>
+        <field name="arch" type="xml">
+            <t name="Registered" t-name="covid19_assessment.user_registered">
+                <t t-call="website.layout">
+                    <div>
+                        <h1> SUCCESS </h1>
+                        <div class="alert alert-success" role="status">
+                            Thanks, we will contact you when the data is procceded.
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </field>
+    </record> -->
 
     <!-- actions opening views on models -->
-<!--
+
     <record model="ir.actions.act_window" id="covid19_assessment.action_window">
       <field name="name">covid19_assessment window</field>
       <field name="res_model">covid19_assessment.covid19_assessment</field>
       <field name="view_mode">tree,form</field>
     </record>
--->
 
     <!-- server action to the one above -->
-<!--
+
     <record model="ir.actions.server" id="covid19_assessment.action_server">
       <field name="name">covid19_assessment server</field>
       <field name="model_id" ref="model_covid19_assessment_covid19_assessment"/>
@@ -38,23 +96,23 @@
         }
       </field>
     </record>
--->
+
 
     <!-- Top menu item -->
-<!--
+
     <menuitem name="covid19_assessment" id="covid19_assessment.menu_root"/>
--->
+
     <!-- menu categories -->
-<!--
+
     <menuitem name="Menu 1" id="covid19_assessment.menu_1" parent="covid19_assessment.menu_root"/>
     <menuitem name="Menu 2" id="covid19_assessment.menu_2" parent="covid19_assessment.menu_root"/>
--->
+
     <!-- actions -->
-<!--
+
     <menuitem name="List" id="covid19_assessment.menu_1_list" parent="covid19_assessment.menu_1"
               action="covid19_assessment.action_window"/>
     <menuitem name="Server to list" id="covid19_assessment" parent="covid19_assessment.menu_2"
               action="covid19_assessment.action_server"/>
--->
+
   </data>
 </odoo>
